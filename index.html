@@ -1,59 +1,593 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
+<html lang="en">
+
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./src/input.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Landing Page</title>
+        <link rel="stylesheet" href="./src/output.css">
     </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <nav>
-            <div>
-                <div>
-                    <img src=""/>
+
+    <body class="bg-white">
+        <!-- Header -->
+        <header class="fixed top-0 left-0 right-0 bg-white z-50 border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16 gap-10">
+                    <div class="flex md:items-center w-full md:w-auto justify-between">
+                        <!-- Menu button opens the full-screen overlay -->
+                        <img src="./src/JB_TechLogo.png" class="w-auto h-10" />
+                        <button id="menuToggle" class="md:hidden p-2" aria-expanded="false" aria-controls="menuOverlay">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="grow justify-end hidden md:flex items-center gap-4">
+                        <a href="tel:+(770) 637-2094" class="text-sm font-medium text-[#1980c3] hover:text-gray-600">(770) 637-2094</a>
+                        <a href="#" class="border border-[#1980c3] text-[#1980c3] px-4 py-2 text-sm font-medium hover:bg-[#1980c3] hover:text-[#FFFFFF]">Project
+                            Planning Tool</a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a id="desktopMenuOpen" href="#" class="flex gap-2">
+                            <div class="text-sm font-medium text-gray-900 hover:text-gray-600">Menu</div>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <span>123-456-7890</span>
-                    <a href="/">
-                        Project Planninng Tool
-                    </a>
-                </div>
-                <button>
-                    <span>Menu</span>
-                </button>
             </div>
-        </nav>
+        </header>
+
+        <!-- Full page menu overlay (hidden by default) -->
+        <div id="menuOverlay" class="fixed inset-0 z-40 hidden" aria-hidden="true">
+            <!-- backdrop -->
+            <div id="menuBackdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+
+            <!-- centered content -->
+            <div class="absolute inset-0 flex items-center justify-center px-6">
+                <div class="w-full max-w-6xl bg-white rounded-lg shadow-xl overflow-hidden">
+                    <div class="relative">
+                        <!-- Close button -->
+                        <button id="menuClose" class="absolute top-4 right-4 p-3 text-gray-700" aria-label="Close menu">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+
+                        <!-- Two-column layout -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
+                            <!-- Left: main menu items -->
+                            <nav class="p-12 flex items-center justify-center">
+                                <ul class="space-y-6 text-center">
+                                    <li><a href="#" class="text-2xl font-semibold text-gray-900 hover:text-gray-600">Home</a></li>
+                                    <li><a href="#" class="text-2xl font-semibold text-gray-900 hover:text-gray-600">Services</a></li>
+                                    <li><a href="#" class="text-2xl font-semibold text-gray-900 hover:text-gray-600">Projects</a></li>
+                                    <li><a href="#" class="text-2xl font-semibold text-gray-900 hover:text-gray-600">About</a></li>
+                                    <li><a href="#" class="text-2xl font-semibold text-gray-900 hover:text-gray-600">Contact</a></li>
+                                </ul>
+                            </nav>
+
+                            <!-- Right: submenu / details -->
+                            <div class="p-12 flex items-center justify-center border-l border-gray-100">
+                                <div class="max-w-sm text-center">
+                                    <h4 class="text-lg font-medium text-gray-700 mb-4">Selected</h4>
+                                    <p class="text-gray-600 mb-6">Select a menu item to see more details here. This column
+                                        shows submenu items or content related to the left column.</p>
+                                    <ul class="space-y-3 text-left">
+                                        <li><a href="#" class="block p-3 rounded hover:bg-gray-50">Sub item 1</a></li>
+                                        <li><a href="#" class="block p-3 rounded hover:bg-gray-50">Sub item 2</a></li>
+                                        <li><a href="#" class="block p-3 rounded hover:bg-gray-50">Sub item 3</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Hero Section -->
-        <section>
-            <div>
-                <div>
-                    <h1>Heading 1</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.</p>
-                    <button>CTA</button>
+        <section class="pt-24 pb-40 h-dvh min-h-[800px] flex items-end relative overflow-hidden">
+            <!-- background video -->
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover -z-20">
+                <source src="./src/heroBg.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- black gradient overlay @ 25% opacity -->
+            <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true" style="background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.85));"></div>
+            <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="flex-1 space-y-6 max-w-[500px] text-white">
+                        <h1 class="text-5xl font-bold  leading-tight">Heading</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna
+                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                        </p>
+                        <a href="/"
+                            class="border border-white px-6 py-3 text-sm font-medium hover:bg-gray-50 mt-4">Button</a>
+                    </div>
+                    <div class="flex-1 flex justify-end">
+                        <div
+                            class="w-16 h-16 rounded-full border border-white text-white flex items-center justify-center text-sm font-medium">
+                            Play</div>
+                    </div>
                 </div>
-                <button>Play</button>
             </div>
         </section>
 
-        <!-- About Us Sectionn -->
-         <section>
-            <h1>About US</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua.</p>
-            <div></div>
-         </section>
-        
-        <script src="" async defer></script>
+        <!-- About Us Section -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 gap-12">
+                    <div class="w-full md:w-1/2">
+                        <div class="flex flex-col gap-3 mb-6">
+                        <h2 class="text-3xl font-bold text-gray-900">About Us</h2>
+                        <div class="w-20 h-1 bg-[#1980c3]"></div>
+                        </div>
+                        <div class="space-y-2">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna
+                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.</p>
+                        </div>
+                    </div>
+                    <div class="relative space-y-8 flex flex-col md:flex-row justify-between md:w-11/12">
+                        <div class="h-100 w-full bg-[url(/src/engineering.jpg)] bg-contain bg-no-repeat flex items-center justify-center text-gray-600 font-medium"></div>
+                        <div class="bg-gray-200 p-6 md:py-6 md:px-10 space-y-4 max-w-[500px] md:mt-[10%] md:-ml-[100px] flex flex-col justify-center" style="box-shadow: 0 3px 12px 0 rgba(140,140,140,.75);">
+                            <h3 class="text-xl font-bold text-gray-900">What We Do</h3>
+                            <div class="space-y-2">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                    labore et dolore magna
+                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                                    ex ea commodo consequat.</p>
+                            </div>
+                            <button
+                                    class="w-fit border border-[#2A9DCE] text-[#2A9DCE] px-6 py-2 text-sm font-bold hover:bg-[#2A9DCE] hover:text-white">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Expertise Section -->
+        <section class="py-16 bg-[#fff]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col gap-3 mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900">Our Expertise</h2>
+                    <div class="w-20 h-1 bg-[#2A9DCE]"></div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-x-10 gap-y-12">
+                    <div class="flex flex-col gap-5 text-[#222222]">
+                        <h3 class="text-xl uppercase font-semibold text-[#2A9DCE]">AUDIO / VISUAL</h3>
+                        <div class="space-y-2">
+                            <p>Enhance communication and
+                            collaboration with JB Technologies'
+                            advanced Audio/Visual systems. We
+                            provide high-quality video conferencing,
+                            digital signage, and custom A/V
+                            integration for a seamless experience
+                            across any environment, ensuring clear,
+                            professional presentations every time.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-5 text-[#222222]">
+                        <h3 class="text-xl uppercase font-semibold text-[#2A9DCE]">Emergency Responder Radio
+                        Communications Systems (EERCS)</h3>
+                        <div class="space-y-2">
+                           <p>Ensure first responders can
+                        communicate effectively during
+                        emergencies with JB Technologies’
+                        ERRCS solutions. We provide reliable,
+                        code-compliant systems that guarantee
+                        clear communication even in the most
+                        challenging environments, enhancing
+                        safety and operational efficiency
+                    </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-5 text-[#222222]">
+                        <h3 class="text-xl uppercase font-semibold text-[#2A9DCE]">FIBER OPTICS</h3>
+                        <div class="space-y-2">
+                            <p>JB Technologies offers state-of-the-art
+                            fiber optic installation and testing,
+                            delivering high-speed, high-capacity
+                            connectivity for businesses and
+                            institutions. Our solutions are
+                            tailored for both short and long distance needs, ensuring fast, reliable
+                            data transfer with minimal downtime.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-5 text-[#222222]">
+                        <h3 class="text-xl uppercase font-semibold text-[#2A9DCE]">ACCESS CONTROL</h3>
+                        <div class="space-y-2">
+                            <p>JB Technologies offers advanced access
+                            control systems to enhance security and
+                            streamline building management. Our
+                            customizable solutions allow for secure,
+                            monitored access to facilities, integrating
+                            seamlessly with your existing
+                            infrastructure to protect your people and
+                            assets with ease.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-5 text-[#222222]">
+                        <h3 class="text-xl uppercase font-semibold text-[#2A9DCE]">CCTV</h3>
+                        <div class="space-y-2">
+                            <p>Protect your assets and ensure safety
+                            with JB Technologies' cutting-edge
+                            CCTV solutions. Our reliable, high definition surveillance systems are
+                            designed to give you real-time
+                            monitoring and peace of mind,
+                            wherever you need it</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-5 text-[#222222]">
+                        <h3 class="text-xl uppercase font-semibold text-[#2A9DCE]">STRUCTURED CABLING</h3>
+                        <div class="space-y-2">
+                            <p>Optimize your network
+                            infrastructure with JB Technologies'
+                            structured cabling solutions. Our
+                            professional installation services
+                            deliver high-performance, organized,
+                            and scalable cabling that supports
+                            your business growth and keeps your
+                            data flowing smoothly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Process Section -->
+        <section class="py-16 bg-[#2A9DCE]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col gap-3 mb-10">
+                    <h2 class="text-3xl font-bold text-white">Our Process</h2>
+                    <div class="w-20 h-1 bg-white"></div>
+                </div>
+                <div class="space-y-2 mb-12 w-full md:max-w-[600px] text-white font-semibold">
+                    <p>Optimize your network
+                        infrastructure with JB Technologies'
+                        structured cabling solutions. Our
+                        professional installation services
+                        deliver high-performance, organized,
+                        and scalable cabling that supports
+                        your business growth and keeps your
+                        data flowing smoothly.</p>
+                </div>
+
+                <div class="space-y-16 grid md:gap-16">
+                    <!-- Process Item 1 -->
+                    <div class="grid md:grid-cols-2 gap-10 items-start">
+                        <div class="space-y-8 md:max-w-[430px]">
+                            <div class="flex items-center gap-4">
+                            <div class="bg-white w-fit p-4 rounded-full">
+                                <h1 class="text-xl font-bold text-[#2A9DCE] leading-none">01</h1>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white">Engineering & Design</h3>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="font-semibold text-[#e0f6ff]">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                    labore et dolore magna
+                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                                    ex ea commodo consequat.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="h-60 md:h-80 bg-[url(/src/engineering.jpg)] rounded-xl bg-cover "></div>
+                    </div>
+
+                    <!-- Process Item 2 -->
+                    <div class="grid md:grid-cols-2 gap-10 items-start">
+                        <div class="h-60 md:h-80 bg-[url(/src/projectmgt.jpg)] rounded-xl bg-cover "></div>
+                        <div class="space-y-8 md:max-w-[430px] md:justify-self-end -order-1 md:order-1">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-white w-fit p-4 rounded-full">
+                                    <h3 class="text-xl font-bold text-[#2A9DCE] leading-none">02</h3>
+                                </div>
+                                <h3 class="text-3xl font-bold text-white">Project Management & Installation</h3>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="font-semibold text-[#e0f6ff]">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                    labore et dolore magna
+                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                                    ex ea commodo consequat.
+                                </p>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Process Item 3 -->
+                    <div class="grid md:grid-cols-2 gap-10 items-start">
+                        <div class="space-y-8 md:max-w-[430px]">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-white w-fit p-4 rounded-full">
+                                    <h3 class="text-xl font-bold text-[#2A9DCE] leading-none">03</h3>
+                                </div>
+                                <h3 class="text-3xl font-bold text-white">System Commissioning & Testing</h3>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="font-semibold text-[#e0f6ff]">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                    labore et dolore magna
+                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                                    ex ea commodo consequat.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="h-60 md:h-80 bg-[url(/src/testing.jpg)] rounded-xl bg-cover "></div>
+                    </div>
+
+                    <!-- Process Item 4 -->
+                    <div class="grid md:grid-cols-2 gap-10 items-start">
+                        <div class="h-60 md:h-80 bg-[url(/src/support.jpg)] rounded-xl bg-cover "></div>
+                        <div class="space-y-8 md:max-w-[430px] md:justify-self-end -order-1 md:order-1">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-white w-fit p-4 rounded-full">
+                                    <h3 class="text-xl font-bold text-[#2A9DCE] leading-none">04</h3>
+                                </div>
+                                <h3 class="text-3xl font-bold text-white">Client Hand-off & Support</h3>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="font-semibold text-[#e0f6ff]">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                    labore et dolore magna
+                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                                    ex ea commodo consequat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Projects Section -->
+        <!-- <section class="py-16 bg-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-12">Our Projects</h2>
+                <div class="bg-gray-300 p-8 relative">
+                    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        <div class="bg-white h-80 flex items-center justify-center text-gray-600 font-medium">Image
+                        </div>
+                        <div class="flex flex-col justify-center space-y-4">
+                            <h3 class="text-2xl font-bold text-gray-900">Example Case Study Project</h3>
+                            <button
+                                class="border border-gray-800 px-6 py-2 text-sm font-medium hover:bg-gray-50 self-start">Button
+                                Case Study</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-center items-center space-x-4 mt-8">
+                        <button
+                            class="w-10 h-10 border border-gray-800 flex items-center justify-center hover:bg-gray-100">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <button
+                            class="w-10 h-10 border border-gray-800 flex items-center justify-center hover:bg-gray-100">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Certifications Section -->
+        <!-- <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Certifications</h2>
+                <div class="space-y-2 mb-8">
+                    <div class="h-2 bg-gray-300 rounded"></div>
+                    <div class="h-2 bg-gray-300 rounded w-5/6"></div>
+                    <div class="h-2 bg-gray-300 rounded w-4/5"></div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="bg-gray-200 h-32 flex items-center justify-center text-gray-900 font-bold">BICSI</div>
+                    <div class="bg-gray-200 h-32 flex items-center justify-center text-gray-900 font-bold">CTS</div>
+                    <div class="bg-gray-200 h-32 flex items-center justify-center text-gray-900 font-bold">Crestron
+                    </div>
+                    <div class="bg-gray-200 h-32 flex items-center justify-center text-gray-900 font-bold">BICSI</div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Testimonials Section -->
+        <!-- <section class="py-16 bg-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Testimonials</h2>
+                <div class="space-y-2 mb-12">
+                    <div class="h-2 bg-gray-300 rounded w-2/3"></div>
+                    <div class="h-2 bg-gray-300 rounded w-1/2"></div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-gray-300 h-48"></div>
+                    <div class="bg-gray-300 h-48"></div>
+                    <div class="bg-gray-300 h-48"></div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- CTA Section -->
+        <section class="py-16 bg-black border-b-2 border-white">
+            <div class="max-w-3xl mx-auto px-4 py-6 sm:py-8 lg:py-10 sm:px-6 lg:px-8 text-center bg-white">
+                <h2 class="text-3xl font-bold text-[#2A9DCE] mb-8">Ready to collaborate?</h2>
+                <button class="border border-[#2A9DCE] text-[#2A9DCE] px-8 py-3 text-sm font-bold hover:bg-[#2A9DCE] hover:text-white">Call Us</button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-black text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-4 gap-8 mb-8">
+                    <div>
+                        <div class="border border-white px-3 py-1 text-sm font-medium inline-block mb-4">Logo</div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-4">Category</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="hover:text-gray-300">Brand</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Brand</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Brand</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-4">Category</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="hover:text-gray-300">Brand</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Brand</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Brand</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-4">Category</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="hover:text-gray-300">Brand</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Brand</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Brand</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-sm text-gray-400">Copyright</p>
+                    <div class="flex space-x-4 mt-4 md:mt-0">
+                        <a href="#"
+                            class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600">
+                            <span class="sr-only">Facebook</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600">
+                            <span class="sr-only">Twitter</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600">
+                            <span class="sr-only">Instagram</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600">
+                            <span class="sr-only">LinkedIn</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Menu overlay toggle with menu text/icon swap
+            (function () {
+                const menuToggle = document.getElementById('menuToggle');
+                const menuOverlay = document.getElementById('menuOverlay');
+                const menuBackdrop = document.getElementById('menuBackdrop');
+                const desktopMenuOpen = document.getElementById('desktopMenuOpen');
+                const menuClose = document.getElementById('menuClose');
+
+                // store originals so we can restore them
+                const originalMenuToggleHTML = menuToggle ? menuToggle.innerHTML : '';
+                const originalMenuToggleAria = menuToggle ? (menuToggle.getAttribute('aria-label') || '') : '';
+                const originalDesktopHTML = desktopMenuOpen ? desktopMenuOpen.innerHTML : '';
+                const originalDesktopAria = desktopMenuOpen ? (desktopMenuOpen.getAttribute('aria-label') || '') : '';
+
+                // provided close SVG
+                const closeSvg = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+</svg>`;
+
+                function openMenu() {
+                    menuOverlay.classList.remove('hidden');
+                    menuOverlay.setAttribute('aria-hidden', 'false');
+                    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
+                    // swap to Close
+                    if (menuToggle) {
+                        menuToggle.innerHTML = closeSvg;
+                        menuToggle.setAttribute('aria-label', 'Close menu');
+                    }
+                    if (desktopMenuOpen) {
+                        desktopMenuOpen.innerHTML = `<div class="text-sm font-medium text-gray-900 hover:text-gray-600">Close</div>${closeSvg}`;
+                        desktopMenuOpen.setAttribute('aria-label', 'Close menu');
+                    }
+                    // prevent body scroll while open
+                    document.documentElement.style.overflow = 'hidden';
+                }
+
+                function closeMenu() {
+                    menuOverlay.classList.add('hidden');
+                    menuOverlay.setAttribute('aria-hidden', 'true');
+                    if (menuToggle) {
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        // restore original mobile icon
+                        if (originalMenuToggleHTML !== null) menuToggle.innerHTML = originalMenuToggleHTML;
+                        if (originalMenuToggleAria) menuToggle.setAttribute('aria-label', originalMenuToggleAria);
+                        else menuToggle.removeAttribute('aria-label');
+                    }
+                    if (desktopMenuOpen) {
+                        if (originalDesktopHTML !== null) desktopMenuOpen.innerHTML = originalDesktopHTML;
+                        if (originalDesktopAria) desktopMenuOpen.setAttribute('aria-label', originalDesktopAria);
+                        else desktopMenuOpen.removeAttribute('aria-label');
+                    }
+                    document.documentElement.style.overflow = '';
+                }
+
+                if (menuToggle) {
+                    menuToggle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        // if overlay visible, close, otherwise open
+                        if (!menuOverlay.classList.contains('hidden')) closeMenu();
+                        else openMenu();
+                    });
+                }
+
+                if (desktopMenuOpen) {
+                    desktopMenuOpen.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (!menuOverlay.classList.contains('hidden')) closeMenu();
+                        else openMenu();
+                    });
+                }
+
+                if (menuClose) {
+                    menuClose.addEventListener('click', () => closeMenu());
+                }
+
+                if (menuBackdrop) {
+                    menuBackdrop.addEventListener('click', () => closeMenu());
+                }
+
+                // Close on ESC
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') closeMenu();
+                });
+            })();
+        </script>
+        <script type="module" src="/main.js"></script>
     </body>
+
 </html>
